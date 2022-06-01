@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(224, 78, 6);
 }
 
 .App-link {
@@ -35,4 +35,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.carrito{
+  display: flex;
+  justify-content:end ;
+  text-align: end;
 }

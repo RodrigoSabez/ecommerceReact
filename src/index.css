@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.carrito{
+  display: flex;
+  justify-content: end;
+  text-align: end;
+}
