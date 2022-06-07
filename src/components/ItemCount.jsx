@@ -18,7 +18,7 @@ const ItemCount = ({inicial, max, onAdd}) => {
     }
 
     return(
-        <div>
+        <div className='contador'>
         <h2>{count}</h2>
         <button onClick={sumar}>+</button>
         <button onClick={restar}>-</button>
