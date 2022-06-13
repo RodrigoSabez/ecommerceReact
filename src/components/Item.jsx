@@ -13,13 +13,13 @@ const Item = ({personajes}) => {
 
         <div class="card-body">
 
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">{name}</h5>
 
-          <p class="card-text">especie: {species}</p>
+          <p class="card-text">Especie: {species}</p>
 
-          <p class="card-text">estado: {status}</p>
+          <p class="card-text">Estado: {status}</p>
 
-          <a href="#" class="btn btn-primary">Ver detalle</a>
+          <a href=" " class="btn btn-primary">Ver detalle</a>
 
         </div>
 
