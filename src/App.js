@@ -20,8 +20,7 @@ function App() {
     
     <NavBar />
     <CartWidget />
-    <Item />
-    <ItemList />
+
     <ItemListContainer /* greetings={'Saludo para el desafio'} */ />  
     <ItemCount  inicial={1} max={10} onAdd={onAdd} />
 
