@@ -5,7 +5,7 @@ import Saludar from './components/Saludar';
 import CartWidget from './components/CartWidget';
 import ItemListContainer from './components/ItemListContainer';
 import ItemCount from './components/ItemCount';
-import Item from './components/item';
+import Item from './components/Item';
 import ItemList from './components/ItemList';
  
 
@@ -20,7 +20,9 @@ function App() {
     
     <NavBar />
     <CartWidget />
-    < ItemListContainer greetings={'Saludo para el desafio'} />  
+    <Item />
+    <ItemList />
+    <ItemListContainer /* greetings={'Saludo para el desafio'} */ />  
     <ItemCount  inicial={1} max={10} onAdd={onAdd} />
 
   </div>
