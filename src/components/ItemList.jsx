@@ -1,5 +1,5 @@
 import React from 'react'
-import item from './item'
+import Item from './Item'
 
 const ItemList = ({personajes}) => {
   return (
