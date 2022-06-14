@@ -3,21 +3,22 @@ import ItemList from './ItemList'
 
 function ItemListContainer({ greetings })  {
   
-  const [personajes, setPersonajes] = useState([])
+  const [productos, setProductos] = useState([])
 
   useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character/")
+    fetch("https://run.mocky.io/v3/19473963-4191-4ad4-a1df-3a8e4f8aa427")
+    fetch("productos.json")
     .then(res => res.json())
     .catch(error => console.error("error:",error))
-    .then(res => setPersonajes(res.results))
+    .then(res => setProductos(res.results))
 
 
   }, [])
-  console.log(personajes)
+  console.log(productos)
   
   return (
     <div>
-      <ItemList personajes={personajes} />
+      <ItemList productos={productos} />
     </div>
   )
 

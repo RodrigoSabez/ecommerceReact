@@ -1,12 +1,15 @@
-import React from 'react'
-import Item from './Item'
+import react from 'react'
+import Item from "./Item"
 
-const ItemList = ({personajes}) => {
-  return (
-    <div>
-      {personajes?.map(personajes => <Item key={personajes.id} personajes={personajes} />)}
-    </div>
-  )
+function ItemList({productos, onAdd, sumarCarrito}){
+
+    return(
+        <div className=" d-flex flex-wrap">
+          {productos?.map((producto)=>{
+                return <Item id={producto.id} nombre={producto.title} imagen={producto.img} key={producto.id} inicial={1} max={producto.stock} onAdd={onAdd} agregarCantidad={sumarCarrito} />
+            })}
+        </div>
+    )
 }
 
 export default ItemList
