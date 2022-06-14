@@ -1,0 +1,67 @@
+[
+    {
+    "id": "01",
+    "title": "Salamandra A",
+    "img": "./img/salamandra11.jpg",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 10000,
+    "stock": 5
+    },
+    {
+    "id": "02",
+    "title": "Salamandra B",
+    "img": "./img/salamandra22.jpg",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 12000,
+    "stock": 5
+    },
+    {
+    "id": "03",
+    "title": "Chulengo A",
+    "img": "./img/chulengo11.jpg",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 5000,
+    "stock": 3
+    },
+    {
+    "id": "04",
+    "title": "Chulengo B",
+    "img": "./img/chulengo22.jpg",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 5500,
+    "stock": 3
+    },
+    {
+    "id": "05",
+    "title": "Juego de parrilla A",
+    "img": "./img/juego parrilla1.jpg",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 1200,
+    "stock": 8
+    },
+    {
+    "id": "06",
+    "title": "Juego de parrilla B",
+    "img": "./img/juego parrilla2.png",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 1500,
+    "stock": 6
+    },
+    {
+    "id": "07",
+    "title": "Calefactor A",
+    "img": "./img/calefactor1.jpg",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 8500,
+    "stock": 2
+    },
+    {
+    "id": "08",
+    "title": "Calefactor B",
+    "img": "./img/calefactor2.jpg",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus tellus, dapibus vitae risus vitae, fringilla vehicula nunc. In fermentum vestibulum nunc, sit amet vestibulum orci ullamcorper ut. Donec vitae elementum nisl. Aliquam ligula sapien, congue a fermentum vel, pulvinar varius turpis. Fusce dictum eleifend congue.",
+    "price": 8000,
+    "stock": 2
+    }
+
+]
