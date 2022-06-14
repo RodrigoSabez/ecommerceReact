@@ -5,11 +5,18 @@ import Saludar from './components/Saludar';
 import CartWidget from './components/CartWidget';
 import ItemListContainer from './components/ItemListContainer';
 import ItemCount from './components/ItemCount';
-import Item from './components/Item';
-import ItemList from './components/ItemList';
+import {useState} from 'react';
+import ItemDetailContainer from "./components/ItemDetailContainer";
+
  
 
 function App() {
+
+  const [carrito, setCarrito] = useState(0);
+    
+  const sumarCarrito = (cantidad) => {
+    setCarrito(carrito + cantidad)
+  }
 
   const onAdd = (count) => {
     alert(`Sumaste ${count} productos`)
@@ -23,6 +30,7 @@ function App() {
 
     <ItemListContainer /* greetings={'Saludo para el desafio'} */ />  
     <ItemCount  inicial={1} max={10} onAdd={onAdd} />
+    <ItemDetailContainer />
 
   </div>
 
