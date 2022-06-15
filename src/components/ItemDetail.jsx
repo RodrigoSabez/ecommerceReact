@@ -1,23 +1,23 @@
 import React from 'react'
 
-const Item = ({productos}) => {
 
-    const  {title, detail, price, img} = productos
+const ItemDetail = ({productos}) => {
+
+    console.log(productos)
   
     return (
-      <div>
   
         <div class="card" style={{ width: '300px' }}>
   
-          <img src={img} class="card-img-top" alt={title} />
+          <img src={productos.img} class="card-img-top" alt={productos.title} />
   
           <div class="card-body">
   
-            <h5 class="card-title">{title}</h5>
+            <h5 class="card-title">{productos.title}</h5>
   
-            <p class="card-text">Detalle: {detail}</p>
+            <p class="card-text">Detalle: {productos.detail}</p>
   
-            <p class="card-text">Precio: {price}</p>
+            <p class="card-text">Precio: {productos.price}</p>
   
             <a href=" " class="btn btn-primary">Ver detalle</a>
   
@@ -25,9 +25,8 @@ const Item = ({productos}) => {
   
         </div>
   
-      </div>
     )
     
   }
   
-  export default Item
+  export default ItemDetail

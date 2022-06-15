@@ -54,9 +54,11 @@ function Item({ inicial, onAdd, max, agregarCantidad, nombre, imagen, id }) {
                     <div className="d-flex gap-3 justify-content-center mt-1">
                         <button onClick={() => { ValidarStock() }} type="button" className="btn card-btn-cart mt-3 btn-sm btn-add" disabled={validarCantidadAgregar()}>Agregar al Carrito</button>
                         <button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button>
-                        <Link to={"/producto/" + id } ><button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button></Link>
+                        {/* <Link to={"/producto/" + id } ><button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button></Link> */}
                     </div>
                 </div>
             </div>
         </>
     )}
+
+    export default Item
