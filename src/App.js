@@ -5,9 +5,11 @@ import ItemListContainer from './components/ItemListContainer';
 import {useState} from 'react';
 import ItemDetailContainer from "./components/ItemDetailContainer";
 
+
  
 
 function App() {
+
 
   const [carrito, setCarrito] = useState(0);
     
@@ -18,8 +20,8 @@ function App() {
   const onAdd = (count) => {
     alert(`Sumaste ${count} productos`)
   }
-
-  return <div>
+return (
+ <div>
     <h1>Bienvenidos al ecommerce NF</h1>
     
     <NavBar />
@@ -29,6 +31,10 @@ function App() {
     <ItemDetailContainer />
 
   </div>
-
+)
+  
 }
+
 export default App;
+
+
