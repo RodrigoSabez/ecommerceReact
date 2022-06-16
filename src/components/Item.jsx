@@ -1,4 +1,4 @@
-import Swal from 'sweetalert'
+//import Swal from 'sweetalert'
 import { useState } from "react"
 import { Link } from "react-router-dom";
 
@@ -31,11 +31,12 @@ function Item({ inicial, onAdd, max, agregarCantidad, nombre, imagen, id }) {
             agregarCantidad(count)
             reset()
         } if (stock === 0) {
-            Swal.fire({
+          /* Swal.fire({
                 title: `No hay mas stock de este producto`,
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
-            })
+            })  */
+            alert("No hay mas stock de este producto")
         };
     }
     return (
@@ -54,7 +55,7 @@ function Item({ inicial, onAdd, max, agregarCantidad, nombre, imagen, id }) {
                     <div className="d-flex gap-3 justify-content-center mt-1">
                         <button onClick={() => { ValidarStock() }} type="button" className="btn card-btn-cart mt-3 btn-sm btn-add" disabled={validarCantidadAgregar()}>Agregar al Carrito</button>
                         <button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button>
-                        {/* <Link to={"/producto/" + id } ><button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button></Link> */}
+                        { <Link to={"/productos/" + id } ><button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button></Link> }
                     </div>
                 </div>
             </div>

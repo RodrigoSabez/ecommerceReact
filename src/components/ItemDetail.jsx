@@ -3,7 +3,6 @@ import React from 'react'
 
 const ItemDetail = ({productos}) => {
 
-    console.log(productos)
   
     return (
   
