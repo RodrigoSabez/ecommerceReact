@@ -1,58 +1,26 @@
-import React, { useEffect, useState } from "react";
-import ItemDetail from "./ItemDetail";
-import productosJson from '../productos.json'
+import React, { useEffect, useState } from 'react'
+import {useParams} from 'react-router-dom'
+import ItemDetail from './ItemDetail'
 
+const ItemDetailContainer = () => {
+    const [productSelected, setProductSelected] = useState({})
 
-function ItemDetailContainer() {
-    
-
-    const [productos, setProductos] = useState([])
-    const [prodSelected, setProdSelected] = useState()
+    const params = useParams()
+ 
 
     useEffect(() => {
-        /* fetch("https://run.mocky.io/v3/19473963-4191-4ad4-a1df-3a8e4f8aa427") 
-        fetch(productosJson)
-        .then(res => res.json())
-        .catch(error => console.error("error:",error))
-        .then(res => setProductos(res.results))*/
-
-        //pedido con promise
-        const productos = new Promise((resolve, reject) => {
-            resolve(productosJson);
+        if(params.id){
+            fetch(`https://mocki.io/v1/15a841db-c563-4a17-9635-6e2cdc9916f9/${params.id}`)
+                .then(res=>res.json())
+                .then(json=>setProductSelected(json))
+                .catch(err=>console.log(err))
         }
-        );
-        productos.then(data => {
-            setProductos(data);
-        }
-        ).catch(error => {
-            console.log("Error:" + error);
-        }
-        );
-        
-    }, [])
-
-   useEffect(() => {
-    const seleccion = '01';
-    if(productos.length > 0){
-        const select = productos.find(producto => producto.id === seleccion);
-        setProdSelected(select);
-    }
-    }, [productos])
-
-console.log(prodSelected);
-    return (
-        <div>
-            {/* <ItemList productos={productos} /> */}
-            {/* <ItemDetail id={itemDetail.id} title={itemDetail.title} img={itemDetail.img} detail={itemDetail.detail} price={itemDetail.price} stock={itemDetail.stock} /> */}
-            <ItemDetail producto={prodSelected} />
-        </div>
-    )
-
-
-
-
+    }, [params.id])
+    
+    console.log(productSelected)
+  return (
+    <ItemDetail product={productSelected} />
+  )
 }
 
-export default ItemDetailContainer;
-
-//{setItemDetail(productos.find(producto => producto.id === id))},  
+export default ItemDetailContainer

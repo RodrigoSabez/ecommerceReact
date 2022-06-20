@@ -1,65 +1,56 @@
-//import Swal from 'sweetalert'
-import { useState } from "react"
+/*
+import React from 'react'
+import { Link } from "react-router-dom";
+const Item = ({product}) => {
+    return (
+        <div class="card" style={{width: '18rem'}}>
+            <img class="card-img-top" src={product.img} alt={product.title}/>
+        <div class="card-body">
+          <h5 class="card-title">{product.title}</h5>
+          <p class="card-text">{product.detail}</p>
+            <Link to={`/producto/${product.id}`} class="btn btn-primary">Ver más</Link>
+
+        </div>
+      </div>
+
+    )
+}
+
+export default Item
+*/
+
+
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 
-function Item({ inicial, onAdd, max, agregarCantidad, nombre, imagen, id }) {
+export default function MediaCard() {
+  return (
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image="/static/images/cards/contemplative-reptile.jpg"
+        alt="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Producto
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Descripcion del producto
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Ver mas</Button>
+      </CardActions>
+    </Card>
+  );
+}
 
-    const [count, setCount] = useState(inicial)
-    const [stock, setStock] = useState(max)
-    const sumar = () => {
-        count < max ? setCount(count + 1) : alert("No puedes agregar mas productos")
-    }
-    const restar = () => {
-        count > inicial ? setCount(count - 1) : alert("Agregue productos por favor")
-    }
-    const reset = () => {
-        setCount(inicial)
-    }
-    const restarStock = () => {
-        stock >= count ? setStock(stock - count) : console.log("No hay stock de este producto")
-    }
-    const validarCantidadSumar = () => {
-        return count + 1 > stock;
-    }
-    const validarCantidadAgregar = () => {
-        return count > stock;
-    }
-    const ValidarStock = () => {
-        if (stock <= 20 && stock !== 0) {
-            restarStock()
-            onAdd(count)
-            agregarCantidad(count)
-            reset()
-        } if (stock === 0) {
-          /* Swal.fire({
-                title: `No hay mas stock de este producto`,
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            })  */
-            alert("No hay mas stock de este producto")
-        };
-    }
-    return (
-        <>
-            <div className="card card-size mt-5">
-                <div className="card-body">
-                    <h5 className="card-title fw-bolder"> {nombre} </h5>
-                    <span className='fw-bold'>Stock:</span><span> {stock} unidades </span>
-                    <img src={imagen} className="card-img-top" alt="..."></img>
-                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consectetur interdum libero et mollis.</p>
-                    <div className="d-flex gap-3 justify-content-center mt-3">
-                        <button onClick={restar} type="button" className="btn card-btn">-</button>
-                        <h2>{count} </h2>
-                        <button onClick={sumar} type="button" className=" btn card-btn" disabled={validarCantidadSumar()}>+</button>
-                    </div>
-                    <div className="d-flex gap-3 justify-content-center mt-1">
-                        <button onClick={() => { ValidarStock() }} type="button" className="btn card-btn-cart mt-3 btn-sm btn-add" disabled={validarCantidadAgregar()}>Agregar al Carrito</button>
-                        <button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button>
-                        { <Link to={"/productos/" + id } ><button type="button" className="btn card-btn-cart mt-3 btn-sm btn-add">Examinar</button></Link> }
-                    </div>
-                </div>
-            </div>
-        </>
-    )}
 
-    export default Item
