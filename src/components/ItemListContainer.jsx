@@ -1,43 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import ItemList from './ItemList'
-import productosJson from '../productos.json'
+import ItemList from './ItemList';
 
-function ItemListContainer({ greetings }) {
+const ItemListContainer = () => {
 
-  const [productos, setProductos] = useState([])
+    const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    /* fetch("https://run.mocky.io/v3/19473963-4191-4ad4-a1df-3a8e4f8aa427") 
-    fetch(productosJson)
-    .then(res => res.json())
-    .catch(error => console.error("error:",error))
-    .then(res => setProductos(res.results))*/
-    
-    //pedido con promise
-    const productos = new Promise((resolve, reject) => {
-      resolve(productosJson);
-    }
-    );
-    productos.then(data => {
-      setProductos(data);
-    }
-    ).catch(error => {
-      console.log("Error:" + error);
-    }
-    );
 
-  }, [])
-  
+    useEffect(() => {
+        fetch('https://mocki.io/v1/15a841db-c563-4a17-9635-6e2cdc9916f9')
+            .then(res=>res.json())
+            .then(json=>setProducts(json))
+            .catch(err=>console.log(err))
+    }, [])
+ 
+
   return (
-    <div>
-      <ItemList productos={productos} />
-    </div>
+    <ItemList products={products} />
   )
-
-
-
-
 }
-
 
 export default ItemListContainer
