@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import ItemDetail from './ItemDetail'
+import { producto } from '../productos.js'
 
 const ItemDetailContainer = () => {
     const [productSelected, setProductSelected] = useState({})
 
     const params = useParams()
- 
+  console.log(producto)
 
     useEffect(() => {
         if(params.id){
-            fetch(`https://mocki.io/v1/15a841db-c563-4a17-9635-6e2cdc9916f9/${params.id}`)
+            fetch(producto)
                 .then(res=>res.json())
-                .then(json=>setProductSelected(json))
+                .then(json=>setProductSelected(json.find(item => item.id == params.id)))
                 .catch(err=>console.log(err))
         }
     }, [params.id])
