@@ -13,11 +13,13 @@ const ItemDetail = ({ product }) => {
                 <h5 className="card-title">{product.title}</h5>
                 <img src={product.img} alt={product.title} />
                 <p className="card-text">{product.detail}</p>
-                <Link to="/" className="btn btn-primary">Volver</Link>
+                <ItemCount />
+                <Link to="/" className="btn btn-dark">Volver</Link>
             </div>
             <div className="card-footer text-muted">
                 ${product.price}
             </div>
+
         </div>
 
 
