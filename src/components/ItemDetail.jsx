@@ -1,18 +1,24 @@
-import React, { useContext } from 'react'
+
 import { Link } from "react-router-dom";
 import ItemCount from './ItemCount'
-import { useState } from 'react';
+import { useContext } from "react";
+import { useState } from "react";
+import { CartContext } from "../context/CartContext";
 
 export default function ItemDetail ( { product } ) {
-    const { title, detail, price, img, id } = product;
+
+    const {title, detail, price, id, img} = product;
+
     
     const {addToCart} = useContext
 
     const [ setCant] = useState(0);
-  
-  
+
+    const {isInCart, addItem} = useContext(CartContext)
+
+
     //FUNCIONES DE ITEM COUNT
-    const [count, setCount] = useState(1)
+    const [count, setCount, ] = useState(1)
     const stock = 10;
   
     const sumar = () => {
@@ -33,6 +39,8 @@ export default function ItemDetail ( { product } ) {
       }
       setCant(count);
       addToCart(detail, count);
+      isInCart (detail.id)
+      addItem(detail, stock)
     }
   
 
