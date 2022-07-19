@@ -1,15 +1,25 @@
-import React, { useContext } from 'react'
-import { Badge } from 'react-bootstrap'
-import { CartContext } from '../context/CartContext'
-import carrito from '../imagenes/carrito.png'
+import React, { useContext } from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
+import { IconContext } from "react-icons";
+import Badge from 'react-bootstrap/Badge';
+import { CartContext } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 
 
 export default function CartWidget() {
 
-  const {getItemQty} = useContext(CartContext)
+  const {getItemQuantity} = useContext(CartContext);
 
   return (
-   <img className='carrito' src={carrito} alt="" />  
-
+    <IconContext.Provider value={{ color: "rgba(255, 255, 255, .55)", size: "2em", className:"iconos"}}>
+      <div>
+        <Link to="/cart"><FaShoppingCart />
+          {getItemQuantity() > 0 ?
+            <Badge bg="light" text="secondary" pill>{getItemQuantity()}</Badge>
+          : 
+          null}
+        </Link>
+      </div>
+    </IconContext.Provider>
   )
 }

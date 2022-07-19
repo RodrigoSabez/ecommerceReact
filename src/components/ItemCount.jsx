@@ -1,38 +1,21 @@
-import React, {useContext, useState} from 'react'
-import Cart from './Cart'
-import {Link} from 'react-router-dom';
+import React, { useContext, useState } from 'react'
+import './ItemCount.css';
+import { CartContext } from '../context/CartContext';
 
+export default function ItemCount({ onAdd, sumar, restar, reset, stock, count }) {
+    const {cart, addToCart} = useContext(CartContext);
 
-const ItemCount = ({inicial, max, onAdd, count, setCount}) => {
-
-
-
-    const sumar = () => {
-        if(count < max){
-            setCount(count + 1)
-        } else(
-            alert("No puedes agregar mas productos")
-        )
-    }
-    const restar = () => {
-        count > inicial ? setCount(count - 1) : alert("No puedes quitar mas productos")
-    }
-    const reset = () => {
-        setCount(inicial)
-    }
-
-      
-    return(
-        <div className='contador'>
-        <h2>{count}</h2>
-        <button type="button" class="btn btn-primary" onClick={sumar} >+</button>
-        <button type="button" class="btn btn-primary" onClick={restar}>-</button>
-
-        <Link to="./Cart" className="btn btn-primary" onClick={() => { onAdd(count); reset()}}> Agregar al carrito</Link>
-
+    return (
+        <div className="cajita">
+            <div className="botones">
+                <button className="botonPrincipal" onClick={restar}>-</button>
+                <p className="item-count">{ count }</p>
+                <button className="botonPrincipal" onClick={sumar}>+</button>
+            </div>
+            <div className="agregar">
+                <button className="botonPrincipal" onClick={() => {onAdd(count); reset()}}>Agregar</button>
+            </div>
         </div>
-        
     )
 }
 
-export default ItemCount

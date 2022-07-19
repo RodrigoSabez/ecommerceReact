@@ -1,28 +1,42 @@
-import React from 'react'
-import carrito from '../imagenes/carrito.png'
+import { Nav, NavDropdown, Container, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import CartWidget from './CartWidget';
+import './NavBar.css';
+import storeLogo from '../logo.svg';
+import { useState } from 'react';
+
 
 function NavBar() {
-  return (
-    <nav class="navbar navbar-expand-lg bg-light"> 
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Nosotros</a>
-        <a class="nav-link" href="#">Productos</a>
-        <a class="nav-link disabled">Contacto</a>
-      </div>
-      <a class="navbar-brand" href="#">
-      <img className='carrito' src={carrito} alt="" width="30" height="24" />
-    </a>
-    </div>
-  </div>
-</nav>
-  )
-}
+  const [expanded, setExpanded] = useState(false);
 
-export default NavBar
+    return (
+      <Navbar expanded={expanded} className="miNavbar primary sticky-top" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand as={Link} to="/" onClick={() => setExpanded(false)}>
+          <img
+          alt=""
+          src={storeLogo}
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />{' '}
+        Moontagne</Navbar.Brand>
+          <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+            <NavDropdown title="Productos" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category/calzado">Calzado</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category/remera-termica">Remeras Térmicas</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category/cuello-balaclava">Cuellos y Balaclavas</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/about">La empresa</Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/contact">Contacto</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+          <CartWidget/>
+        </Container>
+      </Navbar>
+    );
+  }
+
+export default NavBar;
