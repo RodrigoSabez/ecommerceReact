@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Nuestros Fuegos: e-commerce hecho para  el curso de react js 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto esta hecho con [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
