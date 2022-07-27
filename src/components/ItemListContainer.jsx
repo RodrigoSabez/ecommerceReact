@@ -1,22 +1,72 @@
-import React, { useEffect, useState } from 'react'
-import ItemList from './ItemList';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import ItemList from '../components/ItemList';
+import './ItemListContainer.css';
+import { Spinner } from 'react-bootstrap';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { CartContext } from '../context/CartContext';
 
-const ItemListContainer = () => {
 
-    const [products, setProducts] = useState([]);
+export default function ItemListContainer() {
 
 
-    useEffect(() => {
-        fetch('https://mocki.io/v1/15a841db-c563-4a17-9635-6e2cdc9916f9')
-            .then(res=>res.json())
-            .then(json=>setProducts(json))
-            .catch(err=>console.log(err))
-    }, [])
+  const { id } = useParams();
+  const [productos, setProductos] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(false);
+  const { populateCart } = useContext(CartContext);
+  
+  useEffect(() => {
+    populateCart();
+  }
+  , [])
+  
+  useEffect(() => {
+    const db = getFirestore();
+    const productosCollection = collection(db, 'items');
+    
+
+    if (id) {
+      const q = query(productosCollection, where('category', '==', id));
+
+      getDocs(q)
+      .then((snapshot) => {
+        setProductos(
+          snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
+        );
+        setCargando(false);
+      }
+      ).catch(error => {
+        setError(error);
+        setCargando(false);
+      });
+    } else {
+      getDocs(productosCollection)
+      .then((snapshot) => {
+        setProductos(
+          snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
+        );
+      setCargando(false);
+    }
+    ).catch(error => {
+      setError(error);
+      setCargando(false);
+    });
+  }
+  }, [id]);
+
  
+  
 
+
+  
+if (cargando) {
+  return <div className="loader">  <Spinner animation="border" variant="danger" />
+  </div>;
+}
   return (
-    <ItemList products={products} />
+    <div className="containerList">
+      <ItemList productos={productos} />
+    </div>
   )
 }
-
-export default ItemListContainer

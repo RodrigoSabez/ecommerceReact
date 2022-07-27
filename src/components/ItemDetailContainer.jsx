@@ -1,27 +1,74 @@
-import React, { useEffect, useState } from 'react'
-import {useParams} from 'react-router-dom'
-import ItemDetail from './ItemDetail'
-import { producto } from '../productos.js'
+import { Nav, NavDropdown, Container, Navbar } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
+import CartWidget from './CartWidget';
+import './NavBar.css';
+import storeLogo from '../logo.svg';
+import { useEffect, useState } from 'react';
+import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
-const ItemDetailContainer = () => {
-    const [productSelected, setProductSelected] = useState({})
+export default function ItemDetailContainer() {
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
+    const [result, setResult] = useState([])
+    const {id} = useParams ();
 
-    const params = useParams()
-  console.log(producto)
 
     useEffect(() => {
-        if(params.id){
-            fetch(producto)
-                .then(res=>res.json())
-                .then(json=>setProductSelected(json.find(item => item.id == params.id)))
-                .catch(err=>console.log(err))
-        }
-    }, [params.id])
+        const db = getFirestore();
     
-    console.log(productSelected)
-  return (
-    <ItemDetail product={productSelected} />
-  )
+        const productRef = doc(db, 'items', id);
+    
+        getDoc(productRef)
+        .then((snapshot)=> {
+        setResult({...snapshot.data(), id: snapshot.id});
+        })
+        .catch((error) => {
+            setError(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        })
+    }, [id]);
 }
 
-export default ItemDetailContainer
+
+
+
+/*
+
+function NavBar() {
+  const [expanded, setExpanded] = useState(false);
+
+    return (
+      <Navbar expanded={expanded} className="miNavbar primary sticky-top" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand as={Link} to="/" onClick={() => setExpanded(false)}>
+          <img
+          alt=""
+          src={storeLogo}
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />{' '}
+        Moontagne</Navbar.Brand>
+          <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+            <NavDropdown title="Productos" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category/salamandras">Salamandras</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category/calefactores">Calefactores</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category/chulengos">Chulengos</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => setExpanded(false)} as={Link} to="/category/juegos de parrilla">Juegos de parrilla</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/about">Nosotros</Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/contact">Contacto</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+          <CartWidget/>
+        </Container>
+      </Navbar>
+    ); 
+  }
+
+export default NavBar;
+*/
